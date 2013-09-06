@@ -56,6 +56,8 @@ class Areas extends CActiveRecord
 			array('id, nombre, dimensiones, carga_termica, co2, edificaciones_id, tipo_actividad_id, iluminacion_id', 'safe', 'on'=>'search'),
 			array('nombre, dimensiones, carga_termica, co2','required'),
 		);
+
+		
 	}
 
 	/**

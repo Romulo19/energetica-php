@@ -72,6 +72,7 @@ class AreasController extends Controller
 			$model->attributes=$_POST['Areas'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
+			
 		}
 
 		$this->render('create',array(
@@ -96,6 +97,7 @@ class AreasController extends Controller
 			$model->attributes=$_POST['Areas'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
+
 		}
 
 		$this->render('update',array(
