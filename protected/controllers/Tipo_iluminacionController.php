@@ -122,9 +122,10 @@ class Tipo_iluminacionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Tipo_iluminacion');
+		$model=Tipo_iluminacion::model();
+		$tIluminacion = $model->findAll();
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'tIluminacion'=>$tIluminacion,
 		));
 	}
 
