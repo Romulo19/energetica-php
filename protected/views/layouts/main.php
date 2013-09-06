@@ -25,9 +25,9 @@
   <div class="navbar-inner">
     <a class="brand" href="#"></i>Energetica!</a>
     <ul class="nav">
-      <li><a href="/energetica/site/index"><i class="icon-home"></i> <b>Home</b></a></li>
-      <li><a href="/energetica/edificaciones/index"><i class="icon-briefcase"></i> <b>Clientes</b></a></li>
-      <li><a href="/energetica/configuracion/index"><i class="icon-cog"></i> <b>Configuración</b></a></li>
+      <li><a href="/energetica-php/site/index"><i class="icon-home"></i> <b>Home</b></a></li>
+      <li><a href="/energetica-php/edificaciones/index"><i class="icon-briefcase"></i> <b>Clientes</b></a></li>
+      <li><a href="/energetica-php/configuracion/index"><i class="icon-cog"></i> <b>Configuración</b></a></li>
     </ul>
   </div>
 </div>
