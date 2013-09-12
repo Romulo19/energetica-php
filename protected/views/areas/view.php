@@ -5,7 +5,7 @@
 
 $this->menu=array(
 	array('label'=>'Volver a Edificacion', 'url'=>array('/edificaciones/view', 'id'=>$model->edificaciones_id)),
-	array('label'=>'Crear Nuevo Equipo', 'url'=>array('/equipos/create', 'idE'=>$model->id)),
+	array('label'=>'Crear Nuevo Equipo', 'url'=>array('/equipos/create', 'id'=>$model->id)),
 	array('label'=>'Eliminar Area', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'¿Esta seguro que desea eliminar esta area?')),
 	);
 ?>
@@ -47,48 +47,9 @@ $this->menu=array(
   </tbody>
 </table>
 <hr>
-<center><h3>Equipos</h3></center>
-<hr>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Codigo</th>
-      <th>Horas diarias</th>
-      <th>Dias Mensual</th>
-      <th>Potencia</th>
-      <th>Eficiencia</th>
-      <th>Tipo de Equipo</th>
-      <th>Area</th>
-      <th>Ver</th>
-      <th>Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php 
-      foreach ($model->equipos as $equipo) {
-      ?>
-      <tr>
-          <td><?php echo $equipo->id; ?></td>
-          <td><?php echo $equipo->hora_diarias; ?></td>
-          <td><?php echo $equipo->dias_mensual; ?></td>
-          <td><?php echo $equipo->potencia; ?></td>
-          <td><?php echo $equipo->eficiencia; ?></td>
-          <td><?php echo $equipo->tipoEquipos->nombre; ?></td>
-          <td><?php echo $equipo->areas->nombre; ?></td>
-          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/equipos/view', 'id'=>$equipo->id)); ?></td></button>
-          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('/equipos/update', 'id'=>$equipo->id)); ?></td></button>
-        </tr>
-    <?php
-    }   
-
-    ?>
-    
-  </tbody>
-</table class="table table-bordered table-striped">
-<hr>
 <center><h3>Iluminación</h3></center>
 <hr>
-<table>
+<table class="table table-bordered table-striped">
 <tbody>
   <thead>
     <tr>
@@ -103,4 +64,42 @@ $this->menu=array(
   </thead>
 </tbody>
 </table>
+<hr>
+<center><h3>Equipos</h3></center>
+<hr>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Tipo de Equipo</th>
+      <th>Horas diarias</th>
+      <th>Dias Mensual</th>
+      <th>Potencia</th>
+      <th>Eficiencia</th>
+      <th>Ver</th>
+      <th>Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php 
+      foreach ($model->equipos as $equipo) {
+      ?>
+      <tr>
+          <td><?php echo 'Equipo #'.$equipo->id; ?></td>          
+          <td><?php echo $equipo->tipoEquipos->nombre; ?></td>
+          <td><?php echo $equipo->hora_diarias; ?></td>
+          <td><?php echo $equipo->dias_mensual; ?></td>
+          <td><?php echo $equipo->potencia; ?></td>
+          <td><?php echo $equipo->eficiencia; ?></td>
+          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/equipos/view', 'id'=>$equipo->id)); ?></td></button>
+          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('/equipos/update', 'id'=>$equipo->id)); ?></td></button>
+        </tr>
+    <?php
+    }   
+
+    ?>
+    
+  </tbody>
+</table>
+
 </div>

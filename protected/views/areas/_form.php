@@ -47,7 +47,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'tipo_actividad_id'); ?>
-		<?php echo $form->textField($model,'tipo_actividad_id'); ?>
+		<?php echo $form->dropDownList($model,'tipo_actividad_id', CHtml::listData(Tipo_actividad::model()->findAll(),'id', 'nombre')); ?>		
 		<?php echo $form->error($model,'tipo_actividad_id'); ?>
 	</div>
 

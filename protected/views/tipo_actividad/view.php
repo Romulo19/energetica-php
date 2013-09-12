@@ -27,7 +27,7 @@ $this->menu=array(
       		<td><?php echo $model->nombre; ?></td>      		
       	</tr>	
       	<tr>	
-      		<td><b>Iluminancia A</b></td>
+      		<td><b>Iluminancia Promedio</b></td>
       		<td><?php echo $model->iluminancia_promedio; ?></td>
       	</tr>
       	</tr>			

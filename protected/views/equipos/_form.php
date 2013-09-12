@@ -16,6 +16,13 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'tipo_equipos_id'); ?>
+		<?php echo $form->dropDownList($model,'tipo_equipos_id', CHtml::listData(Tipo_equipos::model()->findAll(),'id', 'nombre')); ?>		
+		<?php echo $form->error($model,'tipo_equipos_id'); ?>
+	</div>
+
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'hora_diarias'); ?>
 		<?php echo $form->textField($model,'hora_diarias'); ?>
 		<?php echo $form->error($model,'hora_diarias'); ?>
@@ -39,15 +46,9 @@
 		<?php echo $form->error($model,'eficiencia'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'tipo_equipos_id'); ?>
-		<?php echo $form->textField($model,'tipo_equipos_id'); ?>
-		<?php echo $form->error($model,'tipo_equipos_id'); ?>
-	</div>
-
-	<div class="row">
+	<div class="row" id="idE">
 		<?php echo $form->labelEx($model,'areas_id'); ?>
-		<?php echo $form->textField($model,'areas_id'); ?>
+		<?php echo $form->textField($model,'areas_id', array('value'=>$idA)); ?>
 		<?php echo $form->error($model,'areas_id'); ?>
 	</div>
 

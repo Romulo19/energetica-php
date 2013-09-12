@@ -56,7 +56,7 @@ $this->menu=array(
   		foreach ($model->areases as $area) {
   		?>
   		<tr>
-      		<td><?php echo $area->id; ?></td>
+      		<td><?php echo 'Area #'.$area->id; ?></td>
       		<td><?php echo $area->nombre; ?></td>
       		<td><?php echo $area->dimensiones; ?></td>
       		<td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/areas/view', 'id'=>$area->id)); ?></td></button>
