@@ -22,15 +22,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'iluminancia_a'); ?>
-		<?php echo $form->textField($model,'iluminancia_a'); ?>
-		<?php echo $form->error($model,'iluminancia_a'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'iluminancia_c'); ?>
-		<?php echo $form->textField($model,'iluminancia_c'); ?>
-		<?php echo $form->error($model,'iluminancia_c'); ?>
+		<?php echo $form->labelEx($model,'iluminancia_promedio'); ?>
+		<?php echo $form->textField($model,'iluminancia_promedio'); ?>
+		<?php echo $form->error($model,'iluminancia_promedio'); ?>
 	</div>
 
 	<div class="row buttons">

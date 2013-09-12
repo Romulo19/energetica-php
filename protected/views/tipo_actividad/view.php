@@ -28,11 +28,8 @@ $this->menu=array(
       	</tr>	
       	<tr>	
       		<td><b>Iluminancia A</b></td>
-      		<td><?php echo $model->iluminancia_a; ?></td>
+      		<td><?php echo $model->iluminancia_promedio; ?></td>
       	</tr>
-        <tr>	
-      		<td><b>Iluminancia C</b></td>
-      		<td><?php echo $model->iluminancia_c; ?></td>
       	</tr>			
   </tbody>
 </table>

@@ -21,7 +21,7 @@ $this->menu=array(
       	</tr>
       	<tr>
       		<td><b>Sistema</b></td>
-      		<td><?php echo $model->sistemas_id; ?></td>      		
+      		<td><?php echo $model->sistemas->nombre; ?></td>      		
       	</tr>	
       	<tr>	
       		<td><b>Nombre</b></td>

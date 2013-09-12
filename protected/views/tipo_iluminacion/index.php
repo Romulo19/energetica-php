@@ -8,13 +8,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Tipo Iluminacions</h1>
-
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
-
 
 <div class='contenedor'>
 <h1>Tipo de Iluminaciones</h1>
@@ -31,14 +24,14 @@ $this->menu=array(
   </thead>
   <tbody>
   	<?php 
-  	foreach ($tipo_equipos as $tipo_equipo) {
+  	foreach ($tIluminaciones as $tIluminacion) {
   		?>
   		<tr>
-      		<td><?php echo $tipo_equipo->id; ?></td>      		
-      		<td><?php echo $tipo_equipo->sistemas_id; ?></td>
-      		<td><?php echo $tipo_equipo->nombre; ?></td>
-      		<td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('view', 'id'=>$tipo_equipo->id)); ?></td></button>
-      		<td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('update', 'id'=>$tipo_equipo->id)); ?></td></button>
+      		<td><?php echo $tIluminacion->id; ?></td>      		
+      		<td><?php echo $tIluminacion->nombre; ?></td>
+      		<td><?php echo $tIluminacion->potencia; ?></td>
+      		<td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('view', 'id'=>$tIluminacion->id)); ?></td></button>
+      		<td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('update', 'id'=>$tIluminacion->id)); ?></td></button>
       	</tr>
    	<?php
   	}

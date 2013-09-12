@@ -125,7 +125,7 @@ class Tipo_iluminacionController extends Controller
 		$model=Tipo_iluminacion::model();
 		$tIluminacion = $model->findAll();
 		$this->render('index',array(
-			'tIluminacion'=>$tIluminacion,
+			'tIluminaciones'=>$tIluminacion,
 		));
 	}
 

@@ -40,12 +40,12 @@ class Tipo_actividad extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('iluminancia_a, iluminancia_c', 'numerical'),
+			array('iluminancia_promedio', 'numerical'),
 			array('nombre', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nombre, iluminancia_a, iluminancia_c', 'safe', 'on'=>'search'),
-			array('nombre, iluminancia_a, iluminancia_c', 'required'),
+			array('id, nombre, iluminancia_promedio', 'safe', 'on'=>'search'),
+			array('nombre, iluminancia_promedio', 'required'),
 			);
 	}
 
@@ -69,8 +69,7 @@ class Tipo_actividad extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nombre' => 'Nombre',
-			'iluminancia_a' => 'Iluminancia A',
-			'iluminancia_c' => 'Iluminancia C',
+			'iluminancia_promedio' => 'Iluminancia Promedio',
 		);
 	}
 
@@ -87,8 +86,7 @@ class Tipo_actividad extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nombre',$this->nombre,true);
-		$criteria->compare('iluminancia_a',$this->iluminancia_a);
-		$criteria->compare('iluminancia_c',$this->iluminancia_c);
+		$criteria->compare('iluminancia_promedio',$this->iluminancia_promedio);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

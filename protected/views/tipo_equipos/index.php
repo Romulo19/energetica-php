@@ -4,7 +4,8 @@
 
 
 $this->menu=array(
-	array('label'=>'Nuevo Equipo', 'url'=>array('create')),
+	array('label'=>'Nuevo Tipo de Equipo', 'url'=>array('create')),
+  array('label'=>'Nuevo Sistema de Equipo', 'url'=>array('sistemas/create')),
 );
 ?>
 
@@ -28,7 +29,7 @@ $this->menu=array(
   		?>
   		<tr>
       		<td><?php echo $tipo_equipo->id; ?></td>      		
-      		<td><?php echo $tipo_equipo->sistemas_id; ?></td>
+      		<td><?php echo $tipo_equipo->sistemas->nombre; ?></td>
       		<td><?php echo $tipo_equipo->nombre; ?></td>
       		<td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('view', 'id'=>$tipo_equipo->id)); ?></td></button>
       		<td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('update', 'id'=>$tipo_equipo->id)); ?></td></button>
