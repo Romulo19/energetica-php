@@ -4,7 +4,7 @@
 	<table>
 		<thead>
 			<tr>
-                <td><button class='btn'><?php echo CHtml::link('<i class="icon-check"></i> Tipo de Actividad', array('/tipo_actividad/create')); ?></td></button>
+                <td><button class='btn'><?php echo CHtml::link('<i class="icon-check"></i> Tipo de Actividad', array('/tipo_actividad/')); ?></td></button>
                 <td><button class='btn'><?php echo CHtml::link('<i class="icon-check"></i> Tipo de Equipo', array('/tipo_equipos/create')); ?></td></button>
 				<td><button class='btn'><?php echo CHtml::link('<i class="icon-check"></i> Tipo de Iluminación', array('/tipo_iluminacion/create')); ?></td></button>
 
