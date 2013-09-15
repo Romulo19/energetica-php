@@ -60,7 +60,7 @@ class IluminacionController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
 		$model=new Iluminacion;
 
@@ -71,11 +71,11 @@ class IluminacionController extends Controller
 		{
 			$model->attributes=$_POST['Iluminacion'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('areas/view','id'=>$id));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'idA'=>$id,
 		));
 	}
 
@@ -84,7 +84,7 @@ class IluminacionController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate($id, $idA)
 	{
 		$model=$this->loadModel($id);
 
@@ -99,7 +99,7 @@ class IluminacionController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'idA'=>$idA
 		));
 	}
 

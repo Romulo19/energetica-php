@@ -41,6 +41,8 @@ $this->menu=array(
 <hr>
 <center><h3>Areas</h3></center>
 <hr>
+<?php echo "<button class='btn'>".CHtml::link('<i class="icon-plus"></i> Agregar Nueva Area', array('/areas/create', 'idE'=>$model->id))."</button>";?>
+<br><br>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>

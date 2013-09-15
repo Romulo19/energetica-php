@@ -8,14 +8,15 @@
  * @property integer $cantidad
  * @property integer $horas_operacion
  * @property integer $dias_mensual
- * @property double $iluminancia_pro
- * @property double $rendimien_lu
- * @property double $altura_colo
+ * @property double $iluminancia_promedio
+ * @property double $rendimiento_luminico
+ * @property double $altura_de_colocacion
  * @property integer $tipo_Iluminacion_id
+ * @property integer $areas_id
  *
  * The followings are the available model relations:
- * @property Areas[] $areases
  * @property TipoIluminacion $tipoIluminacion
+ * @property Areas $areas
  */
 class Iluminacion extends CActiveRecord
 {
@@ -45,12 +46,12 @@ class Iluminacion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tipo_Iluminacion_id', 'required'),
-			array('cantidad, horas_operacion, dias_mensual, tipo_Iluminacion_id', 'numerical', 'integerOnly'=>true),
-			array('iluminancia_pro, rendimien_lu, altura_colo', 'numerical'),
+			array('tipo_Iluminacion_id, areas_id', 'required'),
+			array('cantidad, horas_operacion, dias_mensual, tipo_Iluminacion_id, areas_id', 'numerical', 'integerOnly'=>true),
+			array('iluminancia_promedio, rendimiento_luminico, altura_de_colocacion', 'numerical'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, cantidad, horas_operacion, dias_mensual, iluminancia_pro, rendimien_lu, altura_colo, tipo_Iluminacion_id', 'safe', 'on'=>'search'),
+			array('id, cantidad, horas_operacion, dias_mensual, iluminancia_promedio, rendimiento_luminico, altura_de_colocacion, tipo_Iluminacion_id, areas_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,8 +63,8 @@ class Iluminacion extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'areases' => array(self::HAS_MANY, 'Areas', 'iluminacion_id'),
-			'tipoIluminacion' => array(self::BELONGS_TO, 'TipoIluminacion', 'tipo_Iluminacion_id'),
+			'tipo_Iluminacion' => array(self::BELONGS_TO, 'Tipo_Iluminacion', 'tipo_Iluminacion_id'),
+			'areas' => array(self::BELONGS_TO, 'Areas', 'areas_id'),
 		);
 	}
 
@@ -77,10 +78,11 @@ class Iluminacion extends CActiveRecord
 			'cantidad' => 'Cantidad',
 			'horas_operacion' => 'Horas Operacion',
 			'dias_mensual' => 'Dias Mensual',
-			'iluminancia_pro' => 'Iluminancia Pro',
-			'rendimien_lu' => 'Rendimien Lu',
-			'altura_colo' => 'Altura Colo',
+			'iluminancia_promedio' => 'Iluminancia Promedio',
+			'rendimiento_luminico' => 'Rendimiento Luminico',
+			'altura_de_colocacion' => 'Altura De Colocacion',
 			'tipo_Iluminacion_id' => 'Tipo Iluminacion',
+			'areas_id' => 'Areas',
 		);
 	}
 
@@ -99,10 +101,11 @@ class Iluminacion extends CActiveRecord
 		$criteria->compare('cantidad',$this->cantidad);
 		$criteria->compare('horas_operacion',$this->horas_operacion);
 		$criteria->compare('dias_mensual',$this->dias_mensual);
-		$criteria->compare('iluminancia_pro',$this->iluminancia_pro);
-		$criteria->compare('rendimien_lu',$this->rendimien_lu);
-		$criteria->compare('altura_colo',$this->altura_colo);
+		$criteria->compare('iluminancia_promedio',$this->iluminancia_promedio);
+		$criteria->compare('rendimiento_luminico',$this->rendimiento_luminico);
+		$criteria->compare('altura_de_colocacion',$this->altura_de_colocacion);
 		$criteria->compare('tipo_Iluminacion_id',$this->tipo_Iluminacion_id);
+		$criteria->compare('areas_id',$this->areas_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

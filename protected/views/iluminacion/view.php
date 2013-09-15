@@ -25,9 +25,10 @@ $this->menu=array(
 		'cantidad',
 		'horas_operacion',
 		'dias_mensual',
-		'iluminancia_pro',
-		'rendimien_lu',
-		'altura_colo',
+		'iluminancia_promedio',
+		'rendimiento_luminico',
+		'altura_de_colocacion',
 		'tipo_Iluminacion_id',
+		'areas_id',
 	),
 )); ?>

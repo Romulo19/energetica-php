@@ -48,7 +48,7 @@ class SistemasController extends Controller
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
-	 */
+	 *//*
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -71,7 +71,7 @@ class SistemasController extends Controller
 		{
 			$model->attributes=$_POST['Sistemas'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('tipo_equipos/index'));
 		}
 
 		$this->render('create',array(
@@ -83,7 +83,7 @@ class SistemasController extends Controller
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
-	 */
+	 *//*
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -95,7 +95,7 @@ class SistemasController extends Controller
 		{
 			$model->attributes=$_POST['Sistemas'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('tipo_eqipos/view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
@@ -108,25 +108,26 @@ class SistemasController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	/*public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('tipo_eqipos/'));
 	}
 
 	/**
 	 * Lists all models.
 	 */
+	/*
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Sistemas');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.

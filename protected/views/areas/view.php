@@ -5,9 +5,8 @@
 
 $this->menu=array(
 	array('label'=>'Volver a Edificacion', 'url'=>array('/edificaciones/view', 'id'=>$model->edificaciones_id)),
-	array('label'=>'Crear Nuevo Equipo', 'url'=>array('/equipos/create', 'id'=>$model->id)),
 	array('label'=>'Eliminar Area', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'¿Esta seguro que desea eliminar esta area?')),
-	);
+  );
 ?>
 
 <div class = 'contenedor'>
@@ -42,13 +41,24 @@ $this->menu=array(
     	</tr>    	
     	<tr>    		
       		<td><b>Tipo de Actividad</b></td>
-      		<td><?php echo $model->tipoActividad->nombre; ?></td>
+      		<td><?php echo $model->tipo_Actividad->nombre; ?></td>
     	</tr>				
   </tbody>
 </table>
 <hr>
 <center><h3>Iluminación</h3></center>
 <hr>
+<?php
+  if (!$model->iluminacions){
+    echo "<button class='btn'>".CHtml::link('<i class="icon-plus"></i> Agregar Iluminación', array('/iluminacion/create', 'id'=>$model->id))."</button>";
+  }else{
+    foreach ($model->iluminacions as $iluminacion) {
+      echo "<button class='btn'>".CHtml::link('<i class="icon-pencil"></i> Editar Iluminación', array('/iluminacion/update', 'id'=>$iluminacion->id, 'idA'=>$model->id))."</button>";  
+    }
+  }
+?>
+<br>
+<br>
 <table class="table table-bordered table-striped">
 <tbody>
   <thead>
@@ -63,10 +73,31 @@ $this->menu=array(
     </tr>
   </thead>
 </tbody>
+<tbody>
+    <?php 
+      foreach ($model->iluminacions as $iluminacion) {
+      ?>
+      <tr>
+          <td><?php echo $iluminacion->tipo_Iluminacion->nombre; ?></td>          
+          <td><?php echo $iluminacion->tipo_Iluminacion->potencia; ?></td>
+          <td><?php echo $iluminacion->cantidad; ?></td> 
+          <td><?php echo $iluminacion->horas_operacion; ?></td>  
+          <td><?php echo $iluminacion->iluminancia_promedio; ?></td>  
+          <td><?php echo $iluminacion->rendimiento_luminico; ?></td> 
+          <td><?php echo $iluminacion->altura_de_colocacion; ?></td>    
+        </tr>
+    <?php
+    }   
+
+    ?>
+    
+  </tbody>
 </table>
 <hr>
 <center><h3>Equipos</h3></center>
 <hr>
+<?php echo "<button class='btn'>".CHtml::link('<i class="icon-plus"></i> Agregar Nuevo Equipo', array('/equipos/create', 'id'=>$model->id))."</button>";?>
+<br><br>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -82,11 +113,11 @@ $this->menu=array(
       foreach ($model->equipos as $equipo) {
       ?>
       <tr>
-          <td><?php echo 'Equipo #'.$equipo->id; ?></td>          
+          <td><?php echo '#'.$equipo->id; ?></td> 
+          <td><?php echo $equipo->tipo_Equipos->sistemas->nombre; ?></td>       
           <td><?php echo $equipo->tipo_Equipos->nombre; ?></td>
-          <td><?php echo $equipo->sistemas->nombre; ?></td>
           <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/equipos/view', 'id'=>$equipo->id)); ?></td></button>
-          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('/equipos/update', 'id'=>$equipo->id)); ?></td></button>
+          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('/equipos/update', 'id'=>$equipo->id, 'idA'=>$model->id)); ?></td></button>
         </tr>
     <?php
     }   

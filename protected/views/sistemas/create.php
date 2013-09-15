@@ -1,18 +1,7 @@
-<?php
-/* @var $this SistemasController */
-/* @var $model Sistemas */
+<div class= 'contenedor' id = 'form'>
 
-$this->breadcrumbs=array(
-	'Sistemases'=>array('index'),
-	'Create',
-);
-
-$this->menu=array(
-	array('label'=>'List Sistemas', 'url'=>array('index')),
-	array('label'=>'Manage Sistemas', 'url'=>array('admin')),
-);
-?>
-
-<h1>Create Sistemas</h1>
+<h1>Nuevo Sistema</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+
+</div>

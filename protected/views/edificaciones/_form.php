@@ -38,8 +38,9 @@
 		<?php echo $form->textField($model,'telefono'); ?>
 		<?php echo $form->error($model,'telefono'); ?>
 	</div>
+	<br>
 
-	<div class="row buttons">
+	<div class="modal-footer">
 		 <?php //echo CHtml::submitButton($model->isNewRecord ? 'Registrar' : 'Guardar'); ?>
 		 <input class='btn' type="submit" value="Guardar">
 	</div>

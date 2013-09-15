@@ -32,23 +32,28 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'iluminancia_pro'); ?>
-		<?php echo $form->textField($model,'iluminancia_pro'); ?>
+		<?php echo $form->label($model,'iluminancia_promedio'); ?>
+		<?php echo $form->textField($model,'iluminancia_promedio'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'rendimien_lu'); ?>
-		<?php echo $form->textField($model,'rendimien_lu'); ?>
+		<?php echo $form->label($model,'rendimiento_luminico'); ?>
+		<?php echo $form->textField($model,'rendimiento_luminico'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'altura_colo'); ?>
-		<?php echo $form->textField($model,'altura_colo'); ?>
+		<?php echo $form->label($model,'altura_de_colocacion'); ?>
+		<?php echo $form->textField($model,'altura_de_colocacion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'tipo_Iluminacion_id'); ?>
 		<?php echo $form->textField($model,'tipo_Iluminacion_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'areas_id'); ?>
+		<?php echo $form->textField($model,'areas_id'); ?>
 	</div>
 
 	<div class="row buttons">

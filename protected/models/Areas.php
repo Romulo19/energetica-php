@@ -11,13 +11,12 @@
  * @property string $co2
  * @property integer $edificaciones_id
  * @property integer $tipo_actividad_id
- * @property integer $iluminacion_id
  *
  * The followings are the available model relations:
  * @property Edificaciones $edificaciones
  * @property TipoActividad $tipoActividad
- * @property Iluminacion $iluminacion
  * @property Equipos[] $equiposes
+ * @property Iluminacion[] $iluminacions
  */
 class Areas extends CActiveRecord
 {
@@ -47,14 +46,13 @@ class Areas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('edificaciones_id, tipo_actividad_id, iluminacion_id', 'required'),
-			array('edificaciones_id, tipo_actividad_id, iluminacion_id', 'numerical', 'integerOnly'=>true),
+			array('edificaciones_id, tipo_actividad_id', 'required'),
+			array('edificaciones_id, tipo_actividad_id', 'numerical', 'integerOnly'=>true),
 			array('carga_termica', 'numerical'),
 			array('nombre, dimensiones, co2', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nombre, dimensiones, carga_termica, co2, edificaciones_id, tipo_actividad_id, iluminacion_id', 'safe', 'on'=>'search'),
-			array('nombre, dimensiones, carga_termica, co2','required'),
+			array('id, nombre, dimensiones, carga_termica, co2, edificaciones_id, tipo_actividad_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,9 +65,9 @@ class Areas extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'edificaciones' => array(self::BELONGS_TO, 'Edificaciones', 'edificaciones_id'),
-			'tipoActividad' => array(self::BELONGS_TO, 'Tipo_actividad', 'tipo_actividad_id'),
-			'iluminacion' => array(self::BELONGS_TO, 'Iluminacion', 'iluminacion_id'),
+			'tipo_Actividad' => array(self::BELONGS_TO, 'Tipo_Actividad', 'tipo_actividad_id'),
 			'equipos' => array(self::HAS_MANY, 'Equipos', 'areas_id'),
+			'iluminacions' => array(self::HAS_MANY, 'Iluminacion', 'areas_id'),
 		);
 	}
 
@@ -86,7 +84,6 @@ class Areas extends CActiveRecord
 			'co2' => 'Co2',
 			'edificaciones_id' => 'Edificaciones',
 			'tipo_actividad_id' => 'Tipo Actividad',
-			'iluminacion_id' => 'Iluminacion',
 		);
 	}
 
@@ -108,7 +105,6 @@ class Areas extends CActiveRecord
 		$criteria->compare('co2',$this->co2,true);
 		$criteria->compare('edificaciones_id',$this->edificaciones_id);
 		$criteria->compare('tipo_actividad_id',$this->tipo_actividad_id);
-		$criteria->compare('iluminacion_id',$this->iluminacion_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

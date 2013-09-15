@@ -84,7 +84,7 @@ class EquiposController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate($id, $idA)
 	{
 		$model=$this->loadModel($id);
 
@@ -99,7 +99,7 @@ class EquiposController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'idA'=>$idA,
 		));
 	}
 

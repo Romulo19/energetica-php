@@ -49,11 +49,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'cantidad',
 		'horas_operacion',
 		'dias_mensual',
-		'iluminancia_pro',
-		'rendimien_lu',
+		'iluminancia_promedio',
+		'rendimiento_luminico',
 		/*
-		'altura_colo',
+		'altura_de_colocacion',
 		'tipo_Iluminacion_id',
+		'areas_id',
 		*/
 		array(
 			'class'=>'CButtonColumn',

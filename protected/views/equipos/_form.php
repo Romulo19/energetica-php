@@ -66,6 +66,7 @@
 		<?php echo $form->textField($model,'areas_id', array('value'=>$idA)); ?>
 		<?php echo $form->error($model,'areas_id'); ?>
 	</div>
+	
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

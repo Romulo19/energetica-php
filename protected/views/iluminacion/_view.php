@@ -21,21 +21,25 @@
 	<?php echo CHtml::encode($data->dias_mensual); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('iluminancia_pro')); ?>:</b>
-	<?php echo CHtml::encode($data->iluminancia_pro); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('iluminancia_promedio')); ?>:</b>
+	<?php echo CHtml::encode($data->iluminancia_promedio); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('rendimien_lu')); ?>:</b>
-	<?php echo CHtml::encode($data->rendimien_lu); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('rendimiento_luminico')); ?>:</b>
+	<?php echo CHtml::encode($data->rendimiento_luminico); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('altura_colo')); ?>:</b>
-	<?php echo CHtml::encode($data->altura_colo); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('altura_de_colocacion')); ?>:</b>
+	<?php echo CHtml::encode($data->altura_de_colocacion); ?>
 	<br />
 
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('tipo_Iluminacion_id')); ?>:</b>
 	<?php echo CHtml::encode($data->tipo_Iluminacion_id); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('areas_id')); ?>:</b>
+	<?php echo CHtml::encode($data->areas_id); ?>
 	<br />
 
 	*/ ?>
