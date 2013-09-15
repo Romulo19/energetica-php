@@ -21,10 +21,18 @@ $this->menu=array(
   		<tr>
   			<td><b>Codigo</b></td>
       		<td><?php echo $model->id; ?></td>
-      	</tr>        
+      	</tr>
+      <tr>        
+          <td><b>Area</b></td>
+          <td><?php echo $model->areas->nombre; ?></td>
+      </tr> 
         <tr>        
-            <td><b>tipo de Equipo</b></td>
-            <td><?php echo $model->tipoEquipos->nombre; ?></td>
+            <td><b>Sistema</b></td>
+            <td><?php echo $model->sistemas->nombre; ?></td>
+        </tr>     
+        <tr>        
+            <td><b>Tipo de Equipo</b></td>
+            <td><?php echo $model->tipo_Equipos->nombre; ?></td>
         </tr>
       	<tr>
       		<td><b>Horas Diarias</b></td>
@@ -41,11 +49,7 @@ $this->menu=array(
     	<tr>    		
       		<td><b>Eficiencia</b></td>
       		<td><?php echo $model->eficiencia; ?></td>
-    	</tr>
-    	<tr>    		
-      		<td><b>Area</b></td>
-      		<td><?php echo $model->areas->nombre; ?></td>
-    	</tr>    			
+    	</tr>   			
   </tbody>
 </table>
 </div>

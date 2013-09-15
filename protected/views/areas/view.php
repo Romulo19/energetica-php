@@ -71,11 +71,8 @@ $this->menu=array(
   <thead>
     <tr>
       <th>Codigo</th>
-      <th>Tipo de Equipo</th>
-      <th>Horas diarias</th>
-      <th>Dias Mensual</th>
-      <th>Potencia</th>
-      <th>Eficiencia</th>
+      <th>Sistema</th>
+      <th>Tipo de Equipo</th>     
       <th>Ver</th>
       <th>Editar</th>
     </tr>
@@ -86,11 +83,8 @@ $this->menu=array(
       ?>
       <tr>
           <td><?php echo 'Equipo #'.$equipo->id; ?></td>          
-          <td><?php echo $equipo->tipoEquipos->nombre; ?></td>
-          <td><?php echo $equipo->hora_diarias; ?></td>
-          <td><?php echo $equipo->dias_mensual; ?></td>
-          <td><?php echo $equipo->potencia; ?></td>
-          <td><?php echo $equipo->eficiencia; ?></td>
+          <td><?php echo $equipo->tipo_Equipos->nombre; ?></td>
+          <td><?php echo $equipo->sistemas->nombre; ?></td>
           <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/equipos/view', 'id'=>$equipo->id)); ?></td></button>
           <td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('/equipos/update', 'id'=>$equipo->id)); ?></td></button>
         </tr>

@@ -28,16 +28,16 @@ class EquiposController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','tipo'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'users'=>array('*'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -170,6 +170,15 @@ class EquiposController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+
+	public function actionTipo(){
+		$idSistema = $_POST['Equipos']['sistemas_id'];
+		$lista = Tipo_equipos::model()->findAll('sistemas_id = :idSistema', array(':idSistema'=>$idSistema));
+		$lista = CHtml::listData($lista, 'id', 'nombre');
+		foreach ($lista as $valor => $nombre) {
+			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($nombre), true );
 		}
 	}
 }

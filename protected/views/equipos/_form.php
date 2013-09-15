@@ -16,8 +16,23 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'sistemas_id'); ?>
+		<?php echo $form->dropDownList($model,'sistemas_id', CHtml::listData(Sistemas::model()->findAll(),'id', 'nombre'),
+			array(
+				'empty'=>'-- Seleccione un sistema --',
+				'ajax'=>array(
+					'type'=>'POST',
+					'url'=>CController::createUrl('equipos/tipo'),
+					'update'=>'#'.CHtml::activeId($model,'tipo_equipos_id'),
+				),
+			)
+		); ?>		
+		<?php echo $form->error($model,'sistemas_id'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'tipo_equipos_id'); ?>
-		<?php echo $form->dropDownList($model,'tipo_equipos_id', CHtml::listData(Tipo_equipos::model()->findAll(),'id', 'nombre')); ?>		
+		<?php echo $form->dropDownList($model,'tipo_equipos_id', array(), array('empty' => '-- Seleccione un tipo --' )); ?>		
 		<?php echo $form->error($model,'tipo_equipos_id'); ?>
 	</div>
 

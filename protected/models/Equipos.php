@@ -11,10 +11,12 @@
  * @property double $eficiencia
  * @property integer $tipo_equipos_id
  * @property integer $areas_id
+ * @property integer $sistemas_id
  *
  * The followings are the available model relations:
  * @property Areas $areas
  * @property TipoEquipos $tipoEquipos
+ * @property Sistemas $sistemas
  */
 class Equipos extends CActiveRecord
 {
@@ -44,14 +46,13 @@ class Equipos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tipo_equipos_id, areas_id', 'required'),
-			array('hora_diarias, dias_mensual, tipo_equipos_id, areas_id', 'numerical', 'integerOnly'=>true),
+			array('tipo_equipos_id, areas_id, sistemas_id', 'required'),
+			array('hora_diarias, dias_mensual, tipo_equipos_id, areas_id, sistemas_id', 'numerical', 'integerOnly'=>true),
 			array('potencia, eficiencia', 'numerical'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, hora_diarias, dias_mensual, potencia, eficiencia, tipo_equipos_id, areas_id', 'safe', 'on'=>'search'),
-			array('hora_diarias, dias_mensual, potencia, eficiencia' , 'required')
-			);
+			array('id, hora_diarias, dias_mensual, potencia, eficiencia, tipo_equipos_id, areas_id, sistemas_id', 'safe', 'on'=>'search'),
+		);
 	}
 
 	/**
@@ -63,7 +64,8 @@ class Equipos extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'areas' => array(self::BELONGS_TO, 'Areas', 'areas_id'),
-			'tipoEquipos' => array(self::BELONGS_TO, 'Tipo_equipos', 'tipo_equipos_id'),
+			'tipo_Equipos' => array(self::BELONGS_TO, 'tipo_Equipos', 'tipo_equipos_id'),
+			'sistemas' => array(self::BELONGS_TO, 'Sistemas', 'sistemas_id'),
 		);
 	}
 
@@ -80,6 +82,7 @@ class Equipos extends CActiveRecord
 			'eficiencia' => 'Eficiencia',
 			'tipo_equipos_id' => 'Tipo Equipos',
 			'areas_id' => 'Areas',
+			'sistemas_id' => 'Sistemas',
 		);
 	}
 
@@ -101,6 +104,7 @@ class Equipos extends CActiveRecord
 		$criteria->compare('eficiencia',$this->eficiencia);
 		$criteria->compare('tipo_equipos_id',$this->tipo_equipos_id);
 		$criteria->compare('areas_id',$this->areas_id);
+		$criteria->compare('sistemas_id',$this->sistemas_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
