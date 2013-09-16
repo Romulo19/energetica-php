@@ -48,7 +48,7 @@ class IluminacionController extends Controller
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
-	 */
+	 *//*
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -62,21 +62,26 @@ class IluminacionController extends Controller
 	 */
 	public function actionCreate($id)
 	{
-		$model=new Iluminacion;
+		$validacion=Iluminacion::model()->findAll('areas_id = :idArea', array(':idArea'=>$id));
+		if(!$validacion){
+			$model=new Iluminacion;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Iluminacion']))
-		{
-			$model->attributes=$_POST['Iluminacion'];
-			if($model->save())
-				$this->redirect(array('areas/view','id'=>$id));
+			if(isset($_POST['Iluminacion']))
+			{
+				$model->attributes=$_POST['Iluminacion'];
+				if($model->save())
+					$this->redirect(array('areas/view','id'=>$id));
+			}
+
+			$this->render('create',array(
+				'model'=>$model, 'idA'=>$id,
+			));
+		}else{
+			$this->redirect(array('areas/view','id'=>$id));
 		}
-
-		$this->render('create',array(
-			'model'=>$model, 'idA'=>$id,
-		));
 	}
 
 	/**
@@ -107,7 +112,7 @@ class IluminacionController extends Controller
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
-	 */
+	 *//*
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
@@ -119,7 +124,7 @@ class IluminacionController extends Controller
 
 	/**
 	 * Lists all models.
-	 */
+	 *//*
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Iluminacion');
@@ -130,7 +135,7 @@ class IluminacionController extends Controller
 
 	/**
 	 * Manages all models.
-	 */
+	 *//*
 	public function actionAdmin()
 	{
 		$model=new Iluminacion('search');
