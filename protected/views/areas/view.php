@@ -98,30 +98,34 @@ $this->menu=array(
 <hr>
 <?php echo "<button class='btn'>".CHtml::link('<i class="icon-plus"></i> Agregar Nuevo Equipo', array('/equipos/create', 'id'=>$model->id))."</button>";?>
 <br><br>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Codigo</th>
-      <th>Sistema</th>
-      <th>Tipo de Equipo</th>     
-      <th>Ver</th>
-      <th>Editar</th>
-    </tr>
-  </thead>
+<table class="table table-bordered table-striped">  
   <tbody>
-    <?php 
-      foreach ($model->equipos as $equipo) {
+    <?php
+      foreach ($sistemas as $sistema) {
+        if (Equipos::model()->findAll('sistemas_id = :idSistema', array(':idSistema'=>$sistema->id))){          
+          echo '<thead><th colspan="5"><center><b>'.$sistema->nombre.'</b></center></th></thead>';
+          ?>
+          <tr>
+            <th id="campos">Codigo</th>
+            <th id="campos">Tipo de Equipo</th>     
+            <th id="campos">Ver</th>
+            <th id="campos">Editar</th>
+          </tr>
+        <?php
+        }
+        foreach ($model->equipos as $equipo) {
+          if ($sistema->id==$equipo->tipo_Equipos->sistemas->id) {          
       ?>
       <tr>
-          <td><?php echo '#'.$equipo->id; ?></td> 
-          <td><?php echo $equipo->tipo_Equipos->sistemas->nombre; ?></td>       
+          <td><?php echo '#'.$equipo->id; ?></td>        
           <td><?php echo $equipo->tipo_Equipos->nombre; ?></td>
           <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/equipos/view', 'id'=>$equipo->id)); ?></td></button>
           <td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('/equipos/update', 'id'=>$equipo->id, 'idA'=>$model->id)); ?></td></button>
         </tr>
-    <?php
-    }   
-
+    <?php          
+          }
+      }   
+    }
     ?>
     
   </tbody>

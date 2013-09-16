@@ -10,7 +10,12 @@ body
 #idE{
 	display: none;
 }
-
+#gris{
+	background: #c0c0c0;
+}
+#campos{
+	background: #EFEFEF;
+}
 #page
 {
 	margin-top: 5px;

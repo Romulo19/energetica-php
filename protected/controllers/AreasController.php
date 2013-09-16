@@ -51,9 +51,9 @@ class AreasController extends Controller
 	 */
 	public function actionView($id)
 	{
-		
+		$sistemas = Sistemas::model()->findAll();
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($id), 'sistemas'=>$sistemas,
 		));
 	}
 
