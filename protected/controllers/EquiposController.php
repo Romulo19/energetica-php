@@ -110,11 +110,14 @@ class EquiposController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$equipos=$this->loadModel($id);
 		$this->loadModel($id)->delete();
+
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('/equipos/'));
+			$this->redirect(array('areas/view','id'=>$equipos->areas_id));
+			//$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('/areas/'));
 	}
 
 	/**

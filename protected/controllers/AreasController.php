@@ -111,11 +111,13 @@ class AreasController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$area=$this->loadModel($id);
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('/areas/'));
+			$this->redirect(array('edificaciones/view','id'=>$area->edificaciones_id));
+
 	}
 
 	/**

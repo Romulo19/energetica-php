@@ -81,7 +81,7 @@ $this->menu=array(
           <td><?php echo $iluminacion->tipo_Iluminacion->nombre; ?></td>          
           <td><?php echo $iluminacion->tipo_Iluminacion->potencia; ?></td>
           <td><?php echo $iluminacion->cantidad; ?></td> 
-          <td><?php echo $iluminacion->horas_operacion; ?></td>  
+          <td><?php echo $iluminacion->horas_operacion.' hrs'; ?></td>  
           <td><?php echo $iluminacion->iluminancia_promedio; ?></td>  
           <td><?php echo $iluminacion->rendimiento_luminico; ?></td> 
           <td><?php echo $iluminacion->altura_de_colocacion; ?></td>    

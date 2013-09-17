@@ -12,21 +12,20 @@ $this->menu=array(
 <div class = 'contenedor'>
 <h1>Ver Equipo #<?php echo $model->id; ?></h1>
 <hr>
-<table class="table table-bordered table-striped">
-  
+<table class="table table-bordered table-striped">  
   <tbody>
-  		<tr>
-  			<td><b>Codigo</b></td>
-      		<td><?php echo $model->id; ?></td>
-      	</tr>
-      	<tr>
-      		<td><b>Sistema</b></td>
-      		<td><?php echo $model->sistemas->nombre; ?></td>      		
-      	</tr>	
-      	<tr>	
-      		<td><b>Nombre</b></td>
-      		<td><?php echo $model->nombre; ?></td>
-      	</tr>			
+  	<tr>
+  		<td><b>Codigo</b></td>
+      	<td><?php echo $model->id; ?></td>
+      </tr>
+      <tr>
+      	<td><b>Sistema</b></td>
+      	<td><?php echo $model->sistemas->nombre; ?></td>      		
+      </tr>	
+      <tr>	
+      	<td><b>Nombre</b></td>
+      	<td><?php echo $model->nombre; ?></td>
+      </tr>			
   </tbody>
 </table>
 </div>

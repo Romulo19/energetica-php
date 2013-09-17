@@ -36,11 +36,11 @@ $this->menu=array(
         </tr>
       	<tr>
       		<td><b>Horas Diarias</b></td>
-      		<td><?php echo $model->hora_diarias; ?></td>      		
+      		<td><?php echo $model->hora_diarias.' hrs'; ?></td>      		
       	</tr>	
       	<tr>	
       		<td><b>Dias Mensual</b></td>
-      		<td><?php echo $model->dias_mensual; ?></td>
+      		<td><?php echo $model->dias_mensual.' Dias'; ?></td>
       	</tr>
       	<tr>      		
       		<td><b>Potencia</b></td>

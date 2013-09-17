@@ -122,10 +122,10 @@ class Tipo_equiposController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=Tipo_equipos::model();
-		$tipo_equipos=$model->findAll();
+		$tipo_equipos=Tipo_equipos::model()->findAll();
+		$sistemas = Sistemas::model()->findAll();
 		$this->render('index',array(
-			'tipo_equipos'=>$tipo_equipos,
+			'tipo_equipos'=>$tipo_equipos, 'sistemas'=>$sistemas,
 		));
 	}
 
