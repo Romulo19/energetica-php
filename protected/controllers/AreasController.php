@@ -51,9 +51,10 @@ class AreasController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$sistemas = Sistemas::model()->findAll();
+		//$equiposSis = Equipos::model()->findAll('areas_id = :idArea', array(':idArea'=>$id));
+		$equiposSis = Equipos::model()->findAllBySql('SELECT DISTINCT sistemas_id FROM equipos WHERE areas_id ='.$id);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id), 'sistemas'=>$sistemas,
+			'model'=>$this->loadModel($id), 'equiposSis'=>$equiposSis,
 		));
 	}
 

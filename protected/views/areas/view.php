@@ -107,9 +107,9 @@ $this->menu=array(
     $consumo_diario_area=0;    
     $consumo_mensual_sistema=0;
     $consumo_mensual_area=0;
-      foreach ($sistemas as $sistema) {
-        if (Equipos::model()->findAll('sistemas_id = :idSistema', array(':idSistema'=>$sistema->id))){          
-          echo '<thead><th colspan="6" id="tituloEquipo"><center><b>'.$sistema->nombre.'</b></center></th></thead>';
+      foreach ($equiposSis as $equipoSis) {
+        if (Equipos::model()->findAll('sistemas_id = :idSistema', array(':idSistema'=>$equipoSis->sistemas_id))){          
+          echo '<thead><th colspan="6" id="tituloEquipo"><center><b>'.$equipoSis->sistemas->nombre.'</b></center></th></thead>';
           ?>
           <tr>               
             <th id="campos">Ver</th>
@@ -121,7 +121,7 @@ $this->menu=array(
           </tr>
         <?php
         foreach ($model->equipos as $equipo) {
-          if ($sistema->id==$equipo->sistemas_id) {          
+          if ($equipoSis->sistemas_id==$equipo->sistemas_id) {          
       ?>
       <tr>
           <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/equipos/view', 'id'=>$equipo->id)); ?></td></button>
