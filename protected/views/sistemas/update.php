@@ -16,6 +16,8 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Sistemas <?php echo $model->id; ?></h1>
+<div class= 'contenedorForm'>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+
+</div>

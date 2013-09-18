@@ -6,12 +6,26 @@ body
 	font: normal 10pt Arial,Helvetica,sans-serif;
 	background: #EFEFEF;
 }
+#tituloResultado{
+	background: #F78181;	
+	border-top: 3px solid #FF0000;
+}
+
 
 #idE{
 	display: none;
 }
+#tituloEquipo{
+	border-top: 3px solid #0174DF;
+}
 #gris{
-	background: #c0c0c0;
+	background: #EFEFEF;
+}
+
+#bordeTotal{
+	border: 1px solid #c0c0c0;
+	border-left: none;
+	border-right: none;
 }
 #campos{
 	background: #EFEFEF;
@@ -24,15 +38,33 @@ body
 	width: 80%;
 }
 
-.contenedor{
+.contenedor{	
 	padding: 10px;
 	box-shadow: 0px 0px 10px #888; 
 	border-radius: 10px;
 }
-#form{
+
+#form{	
 	padding-left: 40px;
 	padding-right: 40px;
+	padding-bottom: 0px;
+	margin: 4em auto;
+	margin-top: -3%;		
 	width: 40%;
+}
+
+.contenedorForm{	
+	width: 50%;
+	box-shadow: 0px 0px 10px #888; 
+	border-radius: 10px;	
+	margin: 4em auto;	
+	margin-top: -3%;
+}
+#form2{	
+	padding: 10px;
+	padding-left: 30px;
+	padding-right: 40px;
+	padding-bottom: 0px;
 	margin: 4em auto;
 	margin-top: -3%;
 }

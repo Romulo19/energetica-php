@@ -10,7 +10,9 @@
 	'id'=>'iluminacion-form',
 	'enableAjaxValidation'=>false,
 )); ?>
-
+<div id='form2'>
+	<h1>Iluminación</h1>
+	<hr>
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
@@ -62,9 +64,10 @@
 		<?php echo $form->textField($model,'areas_id', array('value'=>$idA)); ?>
 		<?php echo $form->error($model,'areas_id'); ?>
 	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Agregar' : 'Guardar'); ?>
+</div>
+	<div class="modal-footer">
+		 <?php //echo CHtml::submitButton($model->isNewRecord ? 'Registrar' : 'Guardar'); ?>
+		 <input class='btn' type="submit" value="Guardar">
 	</div>
 
 <?php $this->endWidget(); ?>

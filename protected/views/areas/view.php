@@ -101,33 +101,77 @@ $this->menu=array(
 <table class="table table-bordered table-striped">  
   <tbody>
     <?php
+    $carga_area_total=0;
+    $carga_sistemas_total=0;
+    $consumo_diario_sistema=0;
+    $consumo_diario_area=0;    
+    $consumo_mensual_sistema=0;
+    $consumo_mensual_area=0;
       foreach ($sistemas as $sistema) {
         if (Equipos::model()->findAll('sistemas_id = :idSistema', array(':idSistema'=>$sistema->id))){          
-          echo '<thead><th colspan="5"><center><b>'.$sistema->nombre.'</b></center></th></thead>';
+          echo '<thead><th colspan="6" id="tituloEquipo"><center><b>'.$sistema->nombre.'</b></center></th></thead>';
           ?>
-          <tr>
-            <th id="campos">Codigo</th>
-            <th id="campos">Tipo de Equipo</th>     
+          <tr>               
             <th id="campos">Ver</th>
-            <th id="campos">Editar</th>
+            <th id="campos">Codigo</th>
+            <th id="campos">Tipo de Equipo</th> 
+            <th id="campos">Consumo Diario</th>
+            <th id="campos">Consumo Mensual</th>     
+            <th id="campos" >Carga Conectada</th> 
           </tr>
         <?php
-        }
         foreach ($model->equipos as $equipo) {
-          if ($sistema->id==$equipo->tipo_Equipos->sistemas->id) {          
+          if ($sistema->id==$equipo->sistemas_id) {          
       ?>
       <tr>
+          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/equipos/view', 'id'=>$equipo->id)); ?></td></button>
           <td><?php echo '#'.$equipo->id; ?></td>        
           <td><?php echo $equipo->tipo_Equipos->nombre; ?></td>
-          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/equipos/view', 'id'=>$equipo->id)); ?></td></button>
-          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('/equipos/update', 'id'=>$equipo->id, 'idA'=>$model->id)); ?></td></button>
+          <td><?php echo $consumo_diario_equipo=$equipo->potencia*$equipo->hora_diarias;?> KWH/dia</th>
+          <td><?php echo $consumo_mensual_equipo=$consumo_diario_equipo*$equipo->dias_mensual; ?> KWH/mes</th>     
+          <td><?php echo $equipo->potencia?> KW</th>
+          <?php $carga_sistemas_total=$carga_sistemas_total+$equipo->potencia; 
+                $consumo_diario_sistema=$consumo_diario_sistema+$consumo_diario_equipo;
+                $consumo_mensual_sistema=$consumo_mensual_sistema+$consumo_mensual_equipo;
+          ?>
         </tr>
     <?php          
-          }
-      }   
+          } 
+      }
+      ?>
+      <tr style="border-top=2px solid ##6E6E6E;">
+            <td colspan="3" rowspan="2" id='gris'><center><b>Total del Sistema</b></center></td>
+            <th id="campos">Consumo Diario</th>
+            <th id="campos">Consumo Mensual</th>     
+            <th id="campos" colspan="2">Carga Conectada</th>
+          </tr>
+      <tr>
+            <td><?php echo $consumo_diario_sistema;?> KWH/dia</th>
+            <td><?php echo $consumo_mensual_sistema;?> KWH/mes</th>     
+            <td ><?php echo $carga_sistemas_total; ?> KW</th>
+        </tr>
+      <?Php  
+      $carga_area_total=$carga_area_total+$carga_sistemas_total;
+      $consumo_diario_area=$consumo_diario_area+$consumo_diario_sistema;
+      $consumo_mensual_area=$consumo_mensual_area+$consumo_mensual_sistema;
+      $carga_sistemas_total=0;
+      $consumo_diario_sistema=0;
+      $consumo_mensual_sistema=0;
+    }    
     }
     ?>
-    
+    <tbody><th colspan="6" id="tituloResultado"><center><b>Resultado</b></center></th></tbody>
+    <tr style="border-top=2px solid ##6E6E6E;">
+            <td colspan="3" rowspan="2" id='gris'><center><b>Total del Area</b></center></td>
+            <th id="campos">Consumo Diario</th>
+            <th id="campos">Consumo Mensual</th>     
+            <th id="campos" colspan="2">Carga Conectada</th>
+          </tr>
+      <tr>
+            <td><?php echo $consumo_diario_area; ?> KWH/dia</th>
+            <td><?php echo $consumo_mensual_area?> KWH/mes</th>     
+            <td ><?php echo $carga_area_total; ?> KW</th>
+        </tr>
   </tbody>
 </table>
 

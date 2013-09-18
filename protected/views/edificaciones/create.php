@@ -8,8 +8,6 @@ $this->menu=array(
 	
 );
 ?>
-<div class = 'contenedor' id='form'>
-<h1>Nueva Edificación</h1>
-<hr>
+<div class = 'contenedorForm'>
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 </div>

@@ -8,9 +8,7 @@ $this->menu=array(
 );
 ?>
 
-<div class='contenedor' id='form'>
+<div class='contenedorForm' >
 
-	<h1>Nuevo Tipo de Equipo</h1>
-	<hr>
 	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 </div>

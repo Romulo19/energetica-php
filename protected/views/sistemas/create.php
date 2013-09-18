@@ -1,6 +1,4 @@
-<div class= 'contenedor' id = 'form'>
-
-<h1>Nuevo Sistema</h1>
+<div class= 'contenedorForm'>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 

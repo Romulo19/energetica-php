@@ -10,7 +10,9 @@
 	'id'=>'equipos-form',
 	'enableAjaxValidation'=>false,
 )); ?>
-
+<div id='form2'>
+<h1>Equipo</h1>
+<hr>
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
@@ -66,10 +68,10 @@
 		<?php echo $form->textField($model,'areas_id', array('value'=>$idA)); ?>
 		<?php echo $form->error($model,'areas_id'); ?>
 	</div>
-	
+</div>	
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Regisrar' : 'Guardar'); ?>
+	<div class="modal-footer">
+		<input class='btn' type="submit" value="Guardar">
 	</div>
 
 <?php $this->endWidget(); ?>

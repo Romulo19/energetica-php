@@ -5,9 +5,8 @@
 
 ?>
 
-<div class = "contenedor" id='form'>
+<div class = "contenedorForm" >
 
-<h1>Agregar Iluminación</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model, 'idA'=>$idA)); ?>
 </div>

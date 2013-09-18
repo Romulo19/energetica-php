@@ -7,8 +7,7 @@ $this->menu=array(
 	array('label'=>'Listas de Actividades', 'url'=>array('index')),
 );
 ?>
-<div class='contenedor' id='form'>
-<h1>Nuevo Tipo de Actividad</h1>
-<hr>
+<div class='contenedorForm'>
+
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 </div>

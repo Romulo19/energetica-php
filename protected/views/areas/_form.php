@@ -10,7 +10,9 @@
 	'id'=>'areas-form',
 	'enableAjaxValidation'=>false,
 )); ?>
-
+<div id='form2'>
+<h1>Area</h1>
+<hr>
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
@@ -50,8 +52,8 @@
 		<?php echo $form->dropDownList($model,'tipo_actividad_id', CHtml::listData(Tipo_actividad::model()->findAll(),'id', 'nombre')); ?>		
 		<?php echo $form->error($model,'tipo_actividad_id'); ?>
 	</div>
-
-	<div class="row buttons">
+</div>
+	<div class="modal-footer">
 		<input class='btn' type="submit" value="Guardar">
 	</div>
 

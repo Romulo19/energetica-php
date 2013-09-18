@@ -10,7 +10,9 @@
 	'id'=>'tipo-actividad-form',
 	'enableAjaxValidation'=>false,
 )); ?>
-
+<div id='form2'>
+<h1>Tipo de Actividad</h1>
+<hr>
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
@@ -26,11 +28,10 @@
 		<?php echo $form->textField($model,'iluminancia_promedio'); ?>
 		<?php echo $form->error($model,'iluminancia_promedio'); ?>
 	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+</div>
+	<div class="modal-footer">
+		<input class='btn' type="submit" value="Guardar">
 	</div>
-
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

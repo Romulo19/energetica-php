@@ -10,7 +10,9 @@
 	'id'=>'edificaciones-form',
 	'enableAjaxValidation'=>false,
 )); ?>
-
+<div id='form2'>
+<h1>Edificación</h1>
+<hr>
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
@@ -38,8 +40,7 @@
 		<?php echo $form->textField($model,'telefono'); ?>
 		<?php echo $form->error($model,'telefono'); ?>
 	</div>
-	<br>
-
+</div>
 	<div class="modal-footer">
 		 <?php //echo CHtml::submitButton($model->isNewRecord ? 'Registrar' : 'Guardar'); ?>
 		 <input class='btn' type="submit" value="Guardar">
