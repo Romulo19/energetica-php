@@ -43,33 +43,72 @@ $this->menu=array(
 <hr>
 <?php echo "<button class='btn'>".CHtml::link('<i class="icon-plus"></i> Agregar Nueva Area', array('/areas/create', 'idE'=>$model->id))."</button>";?>
 <br><br>
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped">  
+  	<?php 
+    $carga_area_total=0;
+    $carga_edi_total=0;
+    $consumo_diario_area=0;
+    $consumo_diario_edi=0;    
+    $consumo_mensual_area=0;
+    $consumo_mensual_edi=0;
+  		foreach ($model->areases as $area) {
+        foreach ($area->equipos as $equipo) {
+          $carga_area_total=$carga_area_total+$equipo->potencia;
+          $consumo_diario_equipo=$equipo->potencia*$equipo->hora_diarias;
+          $consumo_diario_area=$consumo_diario_area+$consumo_diario_equipo;
+          $consumo_mensual_equipo=$consumo_diario_equipo*$equipo->dias_mensual;
+          $consumo_mensual_area=$consumo_mensual_area+$consumo_mensual_equipo;
+        }
+  		?>
   <thead>
-    <tr>
-      <th>Codigo</th>
-      <th>Nombre</th>
-      <th>Dimensiones</th>
-      <th>Ver</th>
-      <th>Editar</th>
-    </tr>
+      <tr>
+        <th colspan='5' id='tituloEquipo'><center><?php echo 'Area #'.$area->id; ?></center></th>
+      </tr>
   </thead>
   <tbody>
-  	<?php 
-  		foreach ($model->areases as $area) {
-  		?>
+    <tr>      
+      <th id="campos">Ver</th>
+      <th id="campos">Nombre</th>
+      <th id="campos">Consumo Diario</th>
+      <th id="campos">Consumo Mensual</th>     
+      <th id="campos">Carga Conectada</th>
+    </tr>
   		<tr>
-      		<td><?php echo 'Area #'.$area->id; ?></td>
+          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/areas/view', 'id'=>$area->id)); ?></td></button>
       		<td><?php echo $area->nombre; ?></td>
-      		<td><?php echo $area->dimensiones; ?></td>
-      		<td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/areas/view', 'id'=>$area->id)); ?></td></button>
-      		<td><button class='btn'><?php echo CHtml::link('<i class=" icon-pencil"></i>', array('/areas/update', 'id'=>$area->id, 'idE'=>$model->id)); ?></td></button>
-      	
+          <td><?php echo $consumo_diario_area; ?> KWH/dia</td>      		
+          <td><?php echo $consumo_mensual_area;?> KWH/mes</td>
+          <td><?php echo $carga_area_total; ?> KW</td>
       	</tr>
-   	<?php
+   	<?php    
+      $carga_edi_total=$carga_edi_total+$carga_area_total;
+      $consumo_diario_edi=$consumo_diario_edi+$consumo_diario_area;
+      $consumo_mensual_edi=$consumo_mensual_edi+$consumo_mensual_area;
+      $carga_area_total=0;
+      $consumo_diario_area=0;
+      $consumo_mensual_area=0;
    	}  	
 
   	?>
     
+  </tbody>
+   <thead>
+      <tr>
+        <th colspan='6' id='tituloResultado'><center>Resultado</center></th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>      
+      <td rowspan='2' colspan="2" id="gris"><b>Total de la Edificación</b></td>
+      <th id="campos">Consumo Diario</th>
+      <th id="campos">Consumo Mensual</th>     
+      <th id="campos" >Carga Conectada</th>
+    </tr>
+    <tr>
+          <td><?php echo $consumo_diario_edi; ?> KWH/dia</td>          
+          <td><?php echo $consumo_mensual_edi;?> KWH/mes</td>
+          <td><?php echo $carga_edi_total; ?> KW</td>
+        </tr>
   </tbody>
 </table>
 </div>
