@@ -40,6 +40,11 @@ $this->menu=array(
           $consumo_mensual_equipo=$consumo_diario_equipo*$equipo->dias_mensual;
           $consumo_mensual_area=$consumo_mensual_area+$consumo_mensual_equipo;
         }
+        foreach ($area->iluminacions as $iluminacion) {
+        $consumo_diario_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad*$iluminacion->horas_operacion;
+        $consumo_mensual_iluminacion=$consumo_diario_iluminacion*$iluminacion->dias_mensual;     
+        $carga_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad;
+      }
         $carga_edi_total=$carga_edi_total+$carga_area_total;
         $consumo_diario_edi=$consumo_diario_edi+$consumo_diario_area;
         $consumo_mensual_edi=$consumo_mensual_edi+$consumo_mensual_area;
@@ -51,14 +56,20 @@ $this->menu=array(
   		<tr>
           <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('view', 'id'=>$edificacion->id)); ?></td></button>
       		<td><?php echo $edificacion->nombre; ?></td>
-          <td><?php echo $consumo_diario_edi; ?> KWH/dia</td>
-          <td><?php echo $consumo_mensual_edi; ?> KWH/mes</td>
-          <td><?php echo $carga_edi_total; ?> KW</td>
+          <td><?php echo $consumo_diario_edi=$consumo_diario_edi+$consumo_diario_iluminacion; ?> KWH/dia</td>
+          <td><?php echo $consumo_mensual_edi=$consumo_mensual_edi+$consumo_mensual_iluminacion; ?> KWH/mes</td>
+          <td><?php echo $carga_edi_total=$carga_edi_total+$carga_iluminacion; ?> KW</td>
       </tr>
    	<?php
       $consumo_mensual_total=$consumo_mensual_total+$consumo_mensual_edi;
       $consumo_diario_total=$consumo_diario_total+$consumo_diario_edi;
       $carga_total=$carga_total+$carga_edi_total;
+      $consumo_mensual_edi=0;
+      $carga_edi_total=0;
+      $consumo_diario_edi=0;
+      $consumo_diario_iluminacion=0;
+      $consumo_mensual_iluminacion=0;  
+      $carga_iluminacion=0; 
   	}
 
   	?>
@@ -69,7 +80,7 @@ $this->menu=array(
     </thead>
     <tbody>
       <tr>      
-        <th rowspan="2" colspan="2" id="gris"><b>Total de la Edificación</b></td>
+        <th rowspan="2" colspan="2" id="gris"><b>Total Registrado</b></td>
         <th id="campos">Consumo Diario</th>
         <th id="campos">Consumo Mensual</th>     
         <th id="campos" >Carga Conectada</th>

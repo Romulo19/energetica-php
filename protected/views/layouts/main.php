@@ -23,7 +23,7 @@
 
 <div class="navbar">
   <div class="navbar-inner">
-    <a class="brand" href="#"></i>Energetica!</a>
+    <a class="brand" href="#"></i>SISCAE.</a>
     <ul class="nav">
       <li><a href="/energetica-php/site/index"><i class="icon-home"></i> <b>Home</b></a></li>
       <li><a href="/energetica-php/edificaciones/index"><i class="icon-briefcase"></i> <b>Clientes</b></a></li>

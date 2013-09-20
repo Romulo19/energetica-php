@@ -57,12 +57,6 @@
 		<?php echo $form->error($model,'potencia'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'eficiencia'); ?>
-		<?php echo $form->textField($model,'eficiencia'); ?>
-		<?php echo $form->error($model,'eficiencia'); ?>
-	</div>
-
 	<div class="row" id="idE">
 		<?php echo $form->labelEx($model,'areas_id'); ?>
 		<?php echo $form->textField($model,'areas_id', array('value'=>$idA)); ?>

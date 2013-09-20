@@ -28,7 +28,7 @@ class EdificacionesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','Reporte'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -52,6 +52,13 @@ class EdificacionesController extends Controller
 	public function actionView($id)
 	{		
 		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
+	}
+
+	public function actionReporte($id)
+	{		
+		$this->render('reporte',array(
 			'model'=>$this->loadModel($id),
 		));
 	}

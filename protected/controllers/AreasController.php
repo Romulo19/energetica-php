@@ -28,7 +28,7 @@ class AreasController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'reporte'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -58,6 +58,13 @@ class AreasController extends Controller
 		));
 	}
 
+	public function actionReporte($id)
+	{		
+		$equiposSis = Equipos::model()->findAllBySql('SELECT DISTINCT sistemas_id FROM equipos WHERE areas_id ='.$id);
+		$this->render('reporte',array(
+			'model'=>$this->loadModel($id), 'equiposSis'=>$equiposSis,
+		));
+	}
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.

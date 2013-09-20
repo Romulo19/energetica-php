@@ -24,21 +24,15 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'tipo_actividad_id'); ?>
+		<?php echo $form->dropDownList($model,'tipo_actividad_id', CHtml::listData(Tipo_actividad::model()->findAll(),'id', 'nombre')); ?>		
+		<?php echo $form->error($model,'tipo_actividad_id'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'dimensiones'); ?>
 		<?php echo $form->textField($model,'dimensiones',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'dimensiones'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'carga_termica'); ?>
-		<?php echo $form->textField($model,'carga_termica'); ?>
-		<?php echo $form->error($model,'carga_termica'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'co2'); ?>
-		<?php echo $form->textField($model,'co2',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'co2'); ?>
 	</div>
 
 	<div class="row" id='idE'>
@@ -46,12 +40,7 @@
 		<?php echo $form->textField($model,'edificaciones_id', array('value'=>$idE)); ?>
 		<?php echo $form->error($model,'edificaciones_id'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tipo_actividad_id'); ?>
-		<?php echo $form->dropDownList($model,'tipo_actividad_id', CHtml::listData(Tipo_actividad::model()->findAll(),'id', 'nombre')); ?>		
-		<?php echo $form->error($model,'tipo_actividad_id'); ?>
-	</div>
+	
 </div>
 	<div class="modal-footer">
 		<input class='btn' type="submit" value="Guardar">

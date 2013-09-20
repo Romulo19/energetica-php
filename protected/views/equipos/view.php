@@ -34,6 +34,16 @@ $this->menu=array(
             <td><b>Tipo de Equipo</b></td>
             <td><?php echo $model->tipo_Equipos->nombre; ?></td>
         </tr>
+        <tr>        
+          <td><b>Potencia</b></td>
+          <td><?php echo $model->potencia; ?> KW</td>
+      </tr>
+      <?php if($model->sistemas->eficiencia){?> 
+      <tr>        
+          <td><b>Eficiencia</b></td>
+          <td><?php echo $model->sistemas->eficiencia; ?> BTU/h/W</td>
+      </tr> 
+      <?php } ?>
       	<tr>
       		<td><b>Horas Diarias</b></td>
       		<td><?php echo $model->hora_diarias.' hora(s)'; ?></td>      		
@@ -41,15 +51,20 @@ $this->menu=array(
       	<tr>	
       		<td><b>Dias Mensual</b></td>
       		<td><?php echo $model->dias_mensual.' dia(s)'; ?></td>
-      	</tr>
-      	<tr>      		
-      		<td><b>Potencia</b></td>
-      		<td><?php echo $model->potencia; ?></td>
-      	</tr>	
-    	<tr>    		
-      		<td><b>Eficiencia</b></td>
-      		<td><?php echo $model->eficiencia; ?></td>
-    	</tr>   			
+      	</tr>  
+        <tr>
+          <td><b>Consumo Diario</b></td>
+          <td><?php echo $consumo_diario_equipo=$model->potencia*$model->hora_diarias;?> KWH/dia</td>         
+        </tr> 
+          <td><b>Consumo Mensual</b></td>
+          <td><?php echo $consumo_diario_equipo*$model->dias_mensual;?> KWH/mes</td>         
+        </tr>         
+        <tr>
+          <td><b>Carga Conectada</b></td>
+          <td><?php echo $model->potencia; ?> KW</td>         
+        </tr> 
+        <tr>
+        <tr>        			
   </tbody>
 </table>
 </div>

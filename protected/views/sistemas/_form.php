@@ -22,6 +22,11 @@
 		<?php echo $form->textField($model,'nombre',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'nombre'); ?>
 	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'eficiencia'); ?>
+		<?php echo $form->textField($model,'eficiencia',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'eficiencia'); ?>
+	</div>
 </div>
 	<div class="modal-footer">
 		<input class='btn' type="submit" value="Guardar">

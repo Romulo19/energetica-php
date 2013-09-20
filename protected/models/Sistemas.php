@@ -6,8 +6,10 @@
  * The followings are the available columns in table 'sistemas':
  * @property integer $id
  * @property string $nombre
+ * @property double $eficiencia
  *
  * The followings are the available model relations:
+ * @property Equipos[] $equiposes
  * @property TipoEquipos[] $tipoEquiposes
  */
 class Sistemas extends CActiveRecord
@@ -38,10 +40,11 @@ class Sistemas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('eficiencia', 'numerical'),
 			array('nombre', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nombre', 'safe', 'on'=>'search'),
+			array('id, nombre, eficiencia', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,6 +56,7 @@ class Sistemas extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'equiposes' => array(self::HAS_MANY, 'Equipos', 'sistemas_id'),
 			'tipoEquiposes' => array(self::HAS_MANY, 'TipoEquipos', 'sistemas_id'),
 		);
 	}
@@ -65,6 +69,7 @@ class Sistemas extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nombre' => 'Nombre',
+			'eficiencia' => 'Eficiencia',
 		);
 	}
 
@@ -81,6 +86,7 @@ class Sistemas extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nombre',$this->nombre,true);
+		$criteria->compare('eficiencia',$this->eficiencia);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -1,20 +1,5 @@
-<?php
-/* @var $this EdificacionesController */
-/* @var $model Edificaciones */
-
-
-$this->menu=array(
-	array('label'=>'Lista de Edificaciones', 'url'=>array('index')),  
-  array('label'=>'--------------------------------------'),
-  array('label'=>'Crear Reporte', 'url'=>array('reporte', 'id'=>$model->id)), 
-  array('label'=>'--------------------------------------'),
-	array('label'=>'Crear Nueva Area', 'url'=>array('/areas/create', 'idE'=>$model->id)), 
-  array('label'=>'Modificar Edificacion', 'url'=>array('update', 'id'=>$model->id)),
-  array('label'=>'Eliminar Edificación', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'¿Esta seguro que desea eliminar esta edificación?')),
-);
-?>
-<div class = 'contenedor'>
-<h1>Ver Edificación #<?php echo $model->id; ?></h1>
+<div id='hoja'>
+<center><h1>Reporte de la Edificación #<?php echo $model->id; ?></h1></center>
 <hr>
 <table class="table table-bordered table-striped">
   
@@ -44,8 +29,6 @@ $this->menu=array(
 <hr>
 <center><h3>Areas</h3></center>
 <hr>
-<?php echo "<button class='btn'>".CHtml::link('<i class="icon-plus"></i> Agregar Nueva Area', array('/areas/create', 'idE'=>$model->id))."</button>";?>
-<br><br>
 <table class="table table-bordered table-striped">  
   	<?php 
     $carga_area_total=0;
@@ -62,31 +45,24 @@ $this->menu=array(
           $consumo_mensual_equipo=$consumo_diario_equipo*$equipo->dias_mensual;
           $consumo_mensual_area=$consumo_mensual_area+$consumo_mensual_equipo;
         }
-        foreach ($area->iluminacions as $iluminacion) {
-        $consumo_diario_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad*$iluminacion->horas_operacion;
-        $consumo_mensual_iluminacion=$consumo_diario_iluminacion*$iluminacion->dias_mensual;     
-        $carga_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad;
-      }
   		?>
   <thead>
       <tr>
-        <th colspan='5' id='tituloEquipo'><center><?php echo 'Area #'.$area->id; ?></center></th>
+        <td colspan='4'><center><b><?php echo 'Area #'.$area->id; ?></b></center></td>
       </tr>
   </thead>
   <tbody>
     <tr>      
-      <th id="campos">Ver</th>
       <th id="campos">Nombre</th>
       <th id="campos">Consumo Diario</th>
       <th id="campos">Consumo Mensual</th>     
       <th id="campos">Carga Conectada</th>
     </tr>
   		<tr>
-          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/areas/view', 'id'=>$area->id)); ?></td></button>
-      		<td><?php echo $area->nombre; ?></td>
-          <td><?php echo $consumo_diario_area=$consumo_diario_area+$consumo_diario_iluminacion; ?> KWH/dia</td>      		
-          <td><?php echo $consumo_mensual_area=$consumo_mensual_area+$consumo_mensual_iluminacion;?> KWH/mes</td>
-          <td><?php echo $carga_area_total=$carga_area_total+$carga_iluminacion; ?> KW</td>
+          <td><?php echo $area->nombre; ?></td>
+          <td><?php echo $consumo_diario_area; ?> KWH/dia</td>      		
+          <td><?php echo $consumo_mensual_area;?> KWH/mes</td>
+          <td><?php echo $carga_area_total; ?> KW</td>
       	</tr>
    	<?php    
       $carga_edi_total=$carga_edi_total+$carga_area_total;
@@ -94,10 +70,7 @@ $this->menu=array(
       $consumo_mensual_edi=$consumo_mensual_edi+$consumo_mensual_area;
       $carga_area_total=0;
       $consumo_diario_area=0;
-      $consumo_mensual_area=0; 
-      $consumo_diario_iluminacion=0;
-      $consumo_mensual_iluminacion=0;  
-      $carga_iluminacion=0;   
+      $consumo_mensual_area=0;
    	}  	
 
   	?>
@@ -105,12 +78,12 @@ $this->menu=array(
   </tbody>
    <thead>
       <tr>
-        <th colspan='6' id='tituloResultado'><center>Resultado</center></th>
+        <td colspan='6'><center><b>Resultado</b></center></td>
       </tr>
   </thead>
   <tbody>
     <tr>      
-      <td rowspan='2' colspan="2" id="gris"><b>Total de la Edificación</b></td>
+      <td rowspan='2' id="gris"><b>Total de la Edificación</b></td>
       <th id="campos">Consumo Diario</th>
       <th id="campos">Consumo Mensual</th>     
       <th id="campos" >Carga Conectada</th>

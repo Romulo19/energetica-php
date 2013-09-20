@@ -17,7 +17,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 	<div class="row">
-		<?php echo $form->labelEx($model,'tipo_Iluminacion_id'); ?>
+		<label>Tipo de Luminaria</label>
 		<?php echo $form->dropDownList($model,'tipo_Iluminacion_id', CHtml::listData(Tipo_iluminacion::model()->findAll(),'id', 'nombre')); ?>		
 		<?php echo $form->error($model,'tipo_Iluminacion_id'); ?>
 	</div>
