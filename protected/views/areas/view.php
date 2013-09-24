@@ -59,6 +59,10 @@ $this->menu=array(
       echo "<button class='btn'>".CHtml::link('<i class="icon-pencil"></i> Editar Iluminación', array('/iluminacion/update', 'id'=>$iluminacion->id, 'idA'=>$model->id))."</button>";  
     }
   }
+
+  $consumo_diario_iluminacion=0;
+  $consumo_mensual_iluminacion=0;
+  $carga_iluminacion=0;
 ?>
 <br>
 <br>
