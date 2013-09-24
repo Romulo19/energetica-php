@@ -54,6 +54,9 @@ $this->menu=array(
     $consumo_diario_edi=0;    
     $consumo_mensual_area=0;
     $consumo_mensual_edi=0;
+    $consumo_mensual_iluminacion=0;
+    $consumo_diario_iluminacion=0;
+    $carga_iluminacion=0;
   		foreach ($model->areases as $area) {
         foreach ($area->equipos as $equipo) {
           $carga_area_total=$carga_area_total+$equipo->potencia;

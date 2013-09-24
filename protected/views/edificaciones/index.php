@@ -31,6 +31,9 @@ $this->menu=array(
     $consumo_mensual_area=0;
     $consumo_mensual_edi=0;
     $consumo_mensual_total=0;
+    $consumo_mensual_iluminacion=0;
+    $consumo_diario_iluminacion=0;
+    $carga_iluminacion=0;
   	foreach ($edificaciones as $edificacion) {    
       foreach ($edificacion->areases as $area) {
         foreach ($area->equipos as $equipo) {
