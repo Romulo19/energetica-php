@@ -2,33 +2,50 @@
 /* @var $this IluminacionController */
 /* @var $model Iluminacion */
 
-$this->breadcrumbs=array(
-	'Iluminacions'=>array('index'),
-	$model->id,
-);
 
 $this->menu=array(
-	array('label'=>'List Iluminacion', 'url'=>array('index')),
-	array('label'=>'Create Iluminacion', 'url'=>array('create')),
-	array('label'=>'Update Iluminacion', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Iluminacion', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Iluminacion', 'url'=>array('admin')),
+	array('label'=>'Editar Iluminacion', 'url'=>array('update', 'id'=>$model->id, 'idA'=>$model->areas_id)),
+	array('label'=>'Eliminar Iluminacion', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id, 'idA'=>$model->areas_id),'confirm'=>'¿Deseas eliminar esta iluminacion?')),
 );
 ?>
 
-<h1>View Iluminacion #<?php echo $model->id; ?></h1>
+<h1>Ver Iluminación</h1>
+<hr>
+<table class="table table-bordered table-striped">
+  
+  <tbody>
+  		<tr>
+  			<td><b>Nombre</b></td>
+      		<td><?php echo $model->tipo_Iluminacion->nombre; ?></td>
+      	</tr>
+      	<tr>
+  			<td><b>Area</b></td>
+      		<td><?php echo $model->areas->nombre; ?></td>
+      	</tr>
+       <tr>
+  			<td><b>Potencia Luminica</b></td>
+      		<td><?php echo $model->tipo_Iluminacion->potencia; ?> KW</td>
+      	</tr>
+        <tr>
+  			<td><b>Cantidad</b></td>
+      		<td><?php echo $model->cantidad; ?> unidad(es)</td>
+      	</tr>  	
+      	<tr>
+  			<td><b>Horas de Operación</b></td>
+      		<td><?php echo $model->horas_operacion; ?> hora(s)</td>
+      	</tr> 	
+      	<tr>
+  			<td><b>Dias de Operación al Mes</b></td>
+      		<td><?php echo $model->dias_mensual; ?> dia(s)</td>
+      	</tr> 
+      	<tr>
+  			<td><b>Rendimiento Luminico</b></td>
+      		<td><?php echo $model->rendimiento_luminico; ?> Lm/W</td>
+      	</tr> 
+      	<tr>
+  			<td><b>Altura de Colocación</b></td>
+      		<td><?php echo $model->altura_de_colocacion; ?> m</td>
+      	</tr>			
+  </tbody>
+</table>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'cantidad',
-		'horas_operacion',
-		'dias_mensual',
-		'iluminancia_promedio',
-		'rendimiento_luminico',
-		'altura_de_colocacion',
-		'tipo_Iluminacion_id',
-		'areas_id',
-	),
-)); ?>

@@ -52,31 +52,35 @@ $this->menu=array(
 <center><h3>Iluminación</h3></center>
 <hr>
 <?php
-  if (!$model->iluminacions){
+  //if (!$model->iluminacions){
     echo "<button class='btn'>".CHtml::link('<i class="icon-plus"></i> Agregar Iluminación', array('/iluminacion/create', 'id'=>$model->id))."</button>";
-  }else{
+  /*}else{
     foreach ($model->iluminacions as $iluminacion) {
       echo "<button class='btn'>".CHtml::link('<i class="icon-pencil"></i> Editar Iluminación', array('/iluminacion/update', 'id'=>$iluminacion->id, 'idA'=>$model->id))."</button>";  
       }
-  }
+  }*/
 
   $consumo_diario_iluminacion=0;
   $consumo_mensual_iluminacion=0;
   $carga_iluminacion=0;
+  $consumo_diario_iluminacion_total=0;
+  $consumo_mensual_iluminacion_total=0;
+  $carga_iluminacion_total=0;
 ?>
 <br>
 <br>
 <table class="table table-bordered table-striped">
 <tbody>
   <thead>
-    <tr>
+    <tr>      
+      <th>Ver</th>
       <th>Tipo de Luminaria</th>      
       <th>Potencia Luminaria</th>
       <th>Cantidad</th>
       <th>Horas de Operación</th>
       <th>Dias Mensual de Operacición</th>
-      <th>Rendimiento Luminico</th>
-      <th>Altura de Colocacion</th>
+      <th>Iluminancia Promedio</th>
+
     </tr>
   </thead>
 </tbody>
@@ -85,30 +89,36 @@ $this->menu=array(
       foreach ($model->iluminacions as $iluminacion) {
       ?>
       <tr>
+          <td><button class='btn'><?php echo CHtml::link('<i class=" icon-eye-open"></i>', array('/iluminacion/view', 'id'=>$iluminacion->id)); ?></td></button></td>
           <td><?php echo $iluminacion->tipo_Iluminacion->nombre; ?></td>          
           <td><?php echo $iluminacion->tipo_Iluminacion->potencia; ?> KW</td>
           <td><?php echo $iluminacion->cantidad; ?> Und.</td> 
           <td><?php echo $iluminacion->horas_operacion.' hrs'; ?></td>            
           <td><?php echo $iluminacion->dias_mensual.' dias'; ?></td> 
-          <td><?php echo $iluminacion->rendimiento_luminico; ?> Lm/W</td> 
-          <td><?php echo $iluminacion->altura_de_colocacion; ?> M</td>    
+          <td><?php echo $iluminacion->iluminancia_promedio; ?> Lux</td>   
         </tr>
-        <tr style="border-top=2px solid ##6E6E6E;">
-            <th id="campos">Iluminancia Promedio</th>
+        
+    <?php
+      $consumo_diario_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad*$iluminacion->horas_operacion;
+      $consumo_mensual_iluminacion=$consumo_diario_iluminacion*$iluminacion->dias_mensual;
+      $carga_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad;
+      $consumo_diario_iluminacion_total=$consumo_diario_iluminacion_total+$consumo_diario_iluminacion;
+      $consumo_mensual_iluminacion_total=$consumo_mensual_iluminacion_total+$consumo_mensual_iluminacion;
+      $carga_iluminacion_total=$carga_iluminacion_total+$carga_iluminacion;
+    }   
+
+    ?>
+    <tr style="border-top=2px solid ##6E6E6E;">
+            <th id="campos"  rowspan='2'>Total de Iluminación</th>
             <th id="campos" colspan="2">Consumo Diario</th>
             <th id="campos" colspan="2">Consumo Mensual</th>     
             <th id="campos" colspan="2">Carga Conectada</th>
           </tr>
       <tr>
-            <td><?php echo $iluminacion->iluminancia_promedio; ?></td>  
-            <td colspan="2"><?php echo $consumo_diario_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad*$iluminacion->horas_operacion?> KWH/dia</th>
-            <td colspan="2"><?php echo $consumo_mensual_iluminacion=$consumo_diario_iluminacion*$iluminacion->dias_mensual ?> KWH/mes</th>     
-            <td colspan="2"><?php echo $carga_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad;?> KW</th>
+            <td colspan="2"><?php echo $consumo_diario_iluminacion_total?> KWH/dia</th>
+            <td colspan="2"><?php echo  $consumo_mensual_iluminacion_total ?> KWH/mes</th>     
+            <td colspan="2"><?php echo $carga_iluminacion_total;?> KW</th>
         </tr>
-    <?php
-    }   
-
-    ?>
     
   </tbody>
 </table>

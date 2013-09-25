@@ -38,19 +38,33 @@
   </tbody>
 </table>
 
-<br><br>
-<table rules='all' border='1' class="table table-bordered table-striped">
+<br>
+<?php
+
+
+  $consumo_diario_iluminacion=0;
+  $consumo_mensual_iluminacion=0;
+  $carga_iluminacion=0;
+  $consumo_diario_iluminacion_total=0;
+  $consumo_mensual_iluminacion_total=0;
+  $carga_iluminacion_total=0;
+?>
+<br>
+<br>
+<table  width='675px' rules='all' border='1' class="table table-bordered table-striped">
 <tbody>
   <thead>
-    <tr><td colspan="7"><center><h3>Iluminación</h3></center></td></tr>
-    <tr height='30px'>
-      <td id="campos"><b>Tipo de Luminaria</b></td>      
-      <td id="campos"><b>Potencia Luminaria</b></td>
-      <td id="campos"><b>Cantidad</b></td>
-      <td id="campos"><b>Horas de Operación</b></td>
-      <td id="campos"><b>Dias Mensual de Operacición</b></td>
-      <td id="campos"><b>Rendimiento Luminico</b></td>
-      <td id="campos"><b>Altura de Colocacion</b></td>
+    <td colspan='6'><center><h3>Iluminación</h3></center></td>
+  </thead>
+  <thead>
+    <tr>      
+      <th id='campos'>Tipo de Luminaria</th>      
+      <th id='campos'>Potencia Luminaria</th>
+      <th id='campos'>Cantidad</th>
+      <th id='campos'>Horas de Operación</th>
+      <th id='campos'>Dias Mensual de Operacición</th>
+      <th id='campos'>Iluminancia Promedio</th>
+
     </tr>
   </thead>
 </tbody>
@@ -58,35 +72,39 @@
     <?php 
       foreach ($model->iluminacions as $iluminacion) {
       ?>
-      <tr height='30px'>
+      <tr>
           <td><?php echo $iluminacion->tipo_Iluminacion->nombre; ?></td>          
           <td><?php echo $iluminacion->tipo_Iluminacion->potencia; ?> KW</td>
           <td><?php echo $iluminacion->cantidad; ?> Und.</td> 
           <td><?php echo $iluminacion->horas_operacion.' hrs'; ?></td>            
           <td><?php echo $iluminacion->dias_mensual.' dias'; ?></td> 
-          <td><?php echo $iluminacion->rendimiento_luminico; ?> Lm/W</td> 
-          <td><?php echo $iluminacion->altura_de_colocacion; ?> M</td>    
+          <td><?php echo $iluminacion->iluminancia_promedio; ?> Lux</td>   
         </tr>
-        <tr height='30px' style="border-top=2px solid ##6E6E6E;">
-            <th id="campos">Iluminancia Promedio</th>
+        
+    <?php
+      $consumo_diario_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad*$iluminacion->horas_operacion;
+      $consumo_mensual_iluminacion=$consumo_diario_iluminacion*$iluminacion->dias_mensual;
+      $carga_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad;
+      $consumo_diario_iluminacion_total=$consumo_diario_iluminacion_total+$consumo_diario_iluminacion;
+      $consumo_mensual_iluminacion_total=$consumo_mensual_iluminacion_total+$consumo_mensual_iluminacion;
+      $carga_iluminacion_total=$carga_iluminacion_total+$carga_iluminacion;
+    }   
+
+    ?>
+    <tr style="border-top=2px solid ##6E6E6E;">
+            <th id="campos"  rowspan='2'>Total de Iluminación</th>
             <th id="campos" colspan="2">Consumo Diario</th>
             <th id="campos" colspan="2">Consumo Mensual</th>     
             <th id="campos" colspan="2">Carga Conectada</th>
           </tr>
       <tr height='30px'>
-            <td><center><?php echo $iluminacion->iluminancia_promedio; ?></center> </td>  
-            <td colspan="2"><center> <?php echo $consumo_diario_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad*$iluminacion->horas_operacion?> KWH/dia</center> </th>
-            <td colspan="2"><center> <?php echo $consumo_mensual_iluminacion=$consumo_diario_iluminacion*$iluminacion->dias_mensual ?> KWH/mes</center> </th>     
-            <td colspan="2"><center> <?php echo $carga_iluminacion=$iluminacion->tipo_Iluminacion->potencia*$iluminacion->cantidad;?> KW</center> </th>
+            <td colspan="2"><?php echo $consumo_diario_iluminacion_total?> KWH/dia</th>
+            <td colspan="2"><?php echo  $consumo_mensual_iluminacion_total ?> KWH/mes</th>     
+            <td colspan="2"><?php echo $carga_iluminacion_total;?> KW</th>
         </tr>
-    <?php
-    }   
-
-    ?>
     
   </tbody>
 </table>
-<center>
 <br>
 <table width='675px' rules='all' border='1' class="table table-bordered table-striped">  
   <thead>

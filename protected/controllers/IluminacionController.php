@@ -48,7 +48,7 @@ class IluminacionController extends Controller
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
-	 *//*
+	 */
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -62,8 +62,7 @@ class IluminacionController extends Controller
 	 */
 	public function actionCreate($id)
 	{
-		$validacion=Iluminacion::model()->findAll('areas_id = :idArea', array(':idArea'=>$id));
-		if(!$validacion){
+		
 			$model=new Iluminacion;
 
 			// Uncomment the following line if AJAX validation is needed
@@ -79,9 +78,7 @@ class IluminacionController extends Controller
 			$this->render('create',array(
 				'model'=>$model, 'idA'=>$id,
 			));
-		}else{
-			$this->redirect(array('areas/view','id'=>$id));
-		}
+		
 	}
 
 	/**
